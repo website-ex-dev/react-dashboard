@@ -1,5 +1,5 @@
 import {lastRates} from './rates';
-import {getServicesDate} from '../../utils/dateUtils'; // TODO name
+import {getServicesDate} from '../../utils/dateUtils';
 
 const HISTORY_LENGTH = 100;
 

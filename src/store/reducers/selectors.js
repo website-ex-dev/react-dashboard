@@ -1,6 +1,6 @@
 import {DEFAULT_CODES} from '../../consts';
 
-/** Последние курсы валют. */ // TODO  название
+/** Последние курсы валют. */
 export const selectLastRates = (state) => state.lastRates.lastRates;
 
 /** Курсы валют для таблицы. */

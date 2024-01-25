@@ -21,9 +21,9 @@ export const FormField = ({label, id, error, children}) => {
 
 FormField.propTypes = {
     label: PropTypes.string,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     error: PropTypes.string,
-    children: PropTypes.elementType.isRequired,
+    children: PropTypes.node.isRequired,
 };
 
 FormField.displayName = 'FormField';

@@ -8,14 +8,12 @@ export const getCurrencies = createAsyncThunk('getCurrencies', async () => GET('
 const currenciesSlice = createSlice({
     name: 'currencies',
     initialState: {
-        // TODO не нужны
         currencies: [],
         currencyOptions: [],
     },
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getCurrencies.fulfilled, (state, action) => {
-            // TODO сортировка
             const currencyOptions = action.payload.items
                 .map(({codeNumeric, name}) => ({label: name, value: codeNumeric}))
                 .sort((a, b) => a.label.localeCompare(b.label));

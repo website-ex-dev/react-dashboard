@@ -4,7 +4,7 @@ import {ThemeContext} from '../../../context/ThemeContext';
 import './styles.scss';
 
 /** Текстовый инпут. */
-export const Input = ({value, onChange, maxLength = 500, readonly, width = 150}) => {
+export const Input = ({value = '', onChange, maxLength = 500, readonly, width = 150}) => {
     const theme = useContext(ThemeContext);
     const onInputChange = (e) => {
         if (onChange) {
@@ -18,7 +18,7 @@ export const Input = ({value, onChange, maxLength = 500, readonly, width = 150})
             maxLength={maxLength}
             readOnly={readonly}
             type="text"
-            value={value}
+            value={value.toString()}
             onChange={onInputChange}
             style={{width}}
         />
@@ -26,9 +26,9 @@ export const Input = ({value, onChange, maxLength = 500, readonly, width = 150})
 };
 
 Input.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
-    maxLength: PropTypes.string,
+    maxLength: PropTypes.number,
     readonly: PropTypes.bool,
     width: PropTypes.string,
 };

@@ -15,8 +15,6 @@ export const Calculator = () => {
     const [form, dispatchForm] = useReducer(calculatorReducer, initialValues);
     const rateList = useSelector(selectLastRates);
 
-    console.log('form', form);
-
     const findRate = (fromCode, toCode) => rateList.find(({code, base}) => fromCode === base && toCode === code);
 
     const getRates = (fromCode, toCode) => {
@@ -38,7 +36,6 @@ export const Calculator = () => {
                 type: 'set_rates',
                 payload: {rates},
             });
-            dispatchForm({type: 'set_to_value', payload: {value: parseFloat(rates.rate.rate) * form.fromValue}});
         }
     }, [rateList]);
 
@@ -54,8 +51,6 @@ export const Calculator = () => {
 
     const onInputChange = (value) => {
         dispatchForm({type: 'set_from_value', payload: {value}});
-
-        // dispatchForm({type: 'set_to_value', payload: {value: findRate(rate.code, rate.base)}});
     };
 
     const onReverse = () => {
@@ -69,7 +64,7 @@ export const Calculator = () => {
                 <div className="form-buttons">
                     <CurrencyButtons value={form.fromCode} onChange={onFromCodeChange} />
                     <div>
-                        <Input maxLength={10} value={form.fromValue} onChange={onInputChange} />
+                        <Input maxLength={10} value={form.fromValue} onChange={onInputChange} readonly />
                         <span className="single-rate">{`1 ${form.fromCode} = ${form.rates.rate} ${form.toCode}`}</span>
                     </div>
                     <button aria-label="button" className="button icon button-reverse" onClick={onReverse} type="button">

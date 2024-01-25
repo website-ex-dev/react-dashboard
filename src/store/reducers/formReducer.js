@@ -41,14 +41,6 @@ export const formReducer = (state, {type, payload}) => {
                 ...state,
                 history,
             };
-        case 'delete_history':
-            history = state.history;
-            history.splice(i, 1);
-
-            return {
-                ...state,
-                history,
-            };
         case 'set_submitted': {
             return {...state, isSubmitted: true};
         }

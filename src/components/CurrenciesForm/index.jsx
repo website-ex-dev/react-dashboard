@@ -22,8 +22,6 @@ export const CurrenciesForm = (id) => {
     const onSubmit = () => {
         if (form.base.error || form.code.error) {
             onChange({type: 'set_submitted'});
-        } else {
-            console.log(form);
         }
     };
 
@@ -37,10 +35,11 @@ export const CurrenciesForm = (id) => {
                         onChange={onBaseChange}
                         placeholder="Выберите..."
                         value={form.base.value}
+                        disabled
                     />
                 </FormField>
                 <FormField error={form.isSubmitted ? form.code.error : ''} label="Валюта котировки">
-                    <Select classNames={classNames(form.code.error)} options={currencyOptions} placeholder="Выберите..." />
+                    <Select classNames={classNames(form.code.error)} options={currencyOptions} placeholder="Выберите..." disabled />
                 </FormField>
                 <div className="buttons">
                     <button className={`button ${theme.color}`} onClick={onSubmit} type="button">

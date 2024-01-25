@@ -36,8 +36,8 @@ export const Dropdown = ({button, children, className = '', position = 'left', t
 };
 
 Dropdown.propTypes = {
-    button: PropTypes.elementType.isRequired,
-    children: PropTypes.elementType.isRequired,
+    button: PropTypes.element.isRequired,
+    children: PropTypes.node,
     className: PropTypes.string,
     position: PropTypes.string,
     triggerOnClick: PropTypes.bool,

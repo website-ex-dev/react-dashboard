@@ -64,5 +64,6 @@ module.exports = {
 
         /** module */
         'import/prefer-default-export': 0,
+        'import/no-extraneous-dependencies': 1,
     },
 };
