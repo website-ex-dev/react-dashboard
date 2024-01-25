@@ -1,0 +1,50 @@
+@import '../../assets/styles/theme';
+
+.settings {
+    display: grid;
+    flex-grow: 1;
+    grid-template: 40px 1fr / 60% 1fr;
+    grid-template-areas:
+        'header header'
+        'widget form';
+    column-gap: var(--padding-midi);
+    padding: var(--padding-midi);
+    padding-top: 0;
+
+    .settings-widget,
+    .settings-form {
+        padding: var(--padding-large);
+        border-radius: var(--border-radius);
+    }
+
+    .settings-widget {
+        grid-area: widget;
+        overflow-y: auto;
+    }
+
+    .settings-form {
+        grid-area: form;
+    }
+
+    .settings-header {
+        grid-area: header;
+        align-self: center;
+    }
+
+    .back-link {
+        text-transform: uppercase;
+    }
+}
+
+@each $tone in $tones {
+    .settings.#{$tone} {
+        .settings-widget,
+        .settings-form {
+            border: var(--#{$tone}-border);
+        }
+
+        .back-link {
+            color: var(--#{$tone}-font-color-1);
+        }
+    }
+}

@@ -1,0 +1,26 @@
+@import '../../../assets/styles/theme';
+
+.input {
+    background: none;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    outline: none;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    max-width: 100%;
+}
+
+@each $color in $colors {
+    .input.#{$color}:focus {
+        border: 1px solid var(--#{$color}-color);
+    }
+}
+
+@each $tone in $tones {
+    .input.#{$tone} {
+        color: var(--#{$tone}-font-color-1);
+        border: var(--#{$tone}-border);
+        background: var(--#{$tone}-background);
+    }
+}

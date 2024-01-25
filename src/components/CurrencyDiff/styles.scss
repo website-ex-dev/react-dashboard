@@ -1,0 +1,29 @@
+.currency-diff {
+    position: relative;
+    padding-left: var(--padding-midi);
+    font-size: 1rem;
+
+    // font-size: 0.9rem; //TODO в rem
+    &::before {
+        position: absolute;
+        top: 2px;
+        left: 0;
+        font-size: 0.8em;
+    }
+
+    &.green {
+        color: var(--green-color);
+
+        &::before {
+            content: '\25b2';
+        }
+    }
+
+    &.red {
+        color: var(--red-light-color);
+
+        &::before {
+            content: '\25bc';
+        }
+    }
+}

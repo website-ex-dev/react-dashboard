@@ -1,0 +1,12 @@
+@import '../../assets/styles/mixins';
+
+.currencies {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: var(--padding-midi);
+    grid-area: currencies;
+}
+
+.settings .currencies {
+    grid-auto-rows: 170px;
+}

@@ -1,0 +1,12 @@
+.select.border-red {
+    border: 1px solid var(--red-light-color) !important;
+}
+
+@each $tone in $tones {
+    .select.#{$tone},
+    .select.#{$tone} + div {
+        color: var(--#{$tone}-font-color-1);
+        border: var(--#{$tone}-border);
+        background: var(--#{$tone}-background);
+    }
+}

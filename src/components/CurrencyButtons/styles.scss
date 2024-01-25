@@ -1,0 +1,15 @@
+.buttons-segmented {
+    display: flex;
+    border-radius: var(--border-radius);
+    padding: 3px;
+    margin-bottom: var(--padding-midi);
+
+    .button {
+        margin-right: 3px;
+    }
+
+    .currency-list-item {
+        padding: var(--padding-small);
+        cursor: pointer;
+    }
+}

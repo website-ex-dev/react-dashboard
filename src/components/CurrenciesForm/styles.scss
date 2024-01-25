@@ -1,0 +1,31 @@
+@import '../../assets/styles/theme';
+
+.currencies-form {
+    display: flex;
+    height: 100%;
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: var(--padding-large);
+    }
+
+    .currencies-form-wrap {
+        border-radius: var(--border-radius);
+        flex-grow: 1;
+        padding: var(--padding-midi);
+    }
+}
+
+@each $tone in $tones {
+    .currencies-form-wrap.#{$tone} {
+        border: var(--#{$tone}-border);
+        background: var(--#{$tone}-background-2);
+        color: var(--#{$tone}-font-color-1);
+
+        .date {
+            color: var(--#{$tone}-font-color-2);
+        }
+    }
+}

@@ -1,0 +1,47 @@
+@import '../../assets/styles/mixins';
+@import '../../assets/styles/theme';
+
+.calculator {
+    border-radius: var(--border-radius);
+    padding: var(--padding-midi);
+    grid-area: calculator;
+
+    .form-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: var(--padding-midi) 0;
+    }
+
+    .single-rate,
+    .date {
+        display: block;
+        font-size: 0.9rem;
+        margin-top: var(--padding-small);
+    }
+
+    .button-reverse {
+        margin: 0 var(--padding-small);
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+@each $tone in $tones {
+    .calculator.#{$tone} {
+        border: var(--#{$tone}-border);
+        background: var(--#{$tone}-background-2);
+
+        label,
+        .date {
+            color: var(--#{$tone}-font-color-1);
+        }
+
+        .single-rate {
+            color: var(--#{$tone}-font-color-2);
+        }
+    }
+}

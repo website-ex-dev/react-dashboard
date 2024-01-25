@@ -1,0 +1,21 @@
+@import '../../assets/styles/theme';
+
+.header-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--padding-midi);
+    height: 40px;
+
+    .header-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@each $color in $colors {
+    .header-layout.#{$color} {
+        background-color: var(--#{$color}-color);
+    }
+}

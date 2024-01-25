@@ -1,0 +1,18 @@
+@import '../assets/styles/theme';
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 36px;
+    transition: all 0.3s ease-in-out;
+
+    .header-title {
+        position: relative;
+        margin: 0;
+        font-weight: normal;
+        margin-right: var(--padding-small);
+        font-size: 1.1rem;
+        text-align: center;
+    }
+}

@@ -1,0 +1,25 @@
+@import '../../assets/styles/theme';
+
+.theme-dropdown {
+    width: 96px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .theme-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 39px;
+        padding: var(--padding-small);
+        font-size: 1.5rem;
+    }
+}
+
+@each $tone in $tones {
+    .theme-dropdown.#{$tone} {
+        border: var(--#{$tone}-border);
+        background: var(--#{$tone}-background-2);
+    }
+}

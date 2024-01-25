@@ -1,0 +1,15 @@
+@import '../../assets/styles/theme';
+
+.currency-chart {
+    border-radius: var(--border-radius);
+    position: relative;
+    grid-area: currency-chart;
+}
+
+@each $tone in $tones {
+    .currency-chart.#{$tone} {
+        border: var(--#{$tone}-border);
+        background: var(--#{$tone}-background-2);
+        color: var(--#{$tone}-font-color-1);
+    }
+}

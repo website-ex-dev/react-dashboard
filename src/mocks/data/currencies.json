@@ -1,0 +1,12 @@
+{
+    "items": [
+        {"codeNumeric": "36", "code": "AUD", "name": "Австралийский доллар"},
+        {"codeNumeric": "978", "code": "EUR", "name": "Евро"},
+        {"codeNumeric": "826", "code": "GBP", "name": "Фунт стерлингов"},
+        {"codeNumeric": "356", "code": "INR", "name": "Индийская рупия"},
+        {"codeNumeric": "156", "code": "CNY", "name": "Юань"},
+        {"codeNumeric": "643", "code": "RUB", "name": "Российский рубль"},
+        {"codeNumeric": "840", "code": "USD", "name": "Доллар США"},
+        {"codeNumeric": "392", "code": "JPY", "name": "Иена"}
+    ]
+}

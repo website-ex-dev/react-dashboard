@@ -1,0 +1,37 @@
+@import '../../assets/styles/mixins';
+
+.dashboard {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: var(--padding-large);
+    grid-gap: var(--padding-midi);
+    overflow-y: auto;
+
+    @include for-phone-only {
+        grid-template-rows: repeat(3, 170px) minmax(350px, 1fr) minmax(350px, 1fr) minmax(350px, 1fr);
+        grid-template-areas:
+            'currencies currencies currencies currencies currencies currencies'
+            'currencies currencies currencies currencies currencies currencies'
+            'currencies currencies currencies currencies currencies currencies'
+            'currency-chart currency-chart currency-chart currency-chart currency-chart currency-chart'
+            'currency-table currency-table currency-table currency-table currency-table currency-table'
+            'calculator calculator calculator calculator calculator calculator';
+    }
+
+    @include for-tablet-portrait-up {
+        grid-template-rows: repeat(2, 170px) minmax(350px, 1fr) minmax(350px, 1fr);
+        grid-template-areas:
+            'currencies currencies currencies currencies currencies currencies'
+            'currencies currencies currencies currencies currencies currencies'
+            'currency-chart currency-chart currency-chart currency-chart currency-chart currency-chart'
+            'currency-table currency-table currency-table calculator calculator calculator';
+    }
+
+    @include for-desktop-up {
+        grid-template-rows: 170px minmax(400px, 1fr);
+        grid-template-areas:
+            'currencies currencies currencies currencies currencies currencies'
+            'currency-chart currency-chart currency-table currency-table calculator calculator';
+    }
+}

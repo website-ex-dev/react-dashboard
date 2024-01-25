@@ -1,0 +1,25 @@
+.svg {
+    overflow: visible;
+    z-index: 2000;
+
+    .path-container {
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+    }
+}
+
+.grid line {
+    stroke: var(--red-light-color);
+    shape-rendering: crispedges;
+}
+
+.grid path {
+    stroke-width: 0;
+}
+
+.line-chart {
+    height: 100% !important;
+    padding: var(--padding-midi);
+}

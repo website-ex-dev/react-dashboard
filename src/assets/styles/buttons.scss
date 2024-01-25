@@ -1,0 +1,34 @@
+@import 'theme';
+
+.button {
+    border-radius: var(--border-radius);
+    padding: 10px 15px;
+    box-shadow: none;
+    background: none;
+    cursor: pointer;
+    border: none;
+    outline: var(--outline);
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    color: var(--white-color);
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &.icon {
+        font-size: 1.4rem;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+@each $color in $colors {
+    .button.#{$color} {
+        background: var(--#{$color}-color);
+    }
+}

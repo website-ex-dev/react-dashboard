@@ -1,0 +1,43 @@
+@import '../../assets/styles/mixins';
+@import '../../assets/styles/theme';
+
+.currencies-table {
+    border-radius: var(--border-radius);
+    padding: var(--padding-midi);
+    overflow: auto;
+    grid-area: currency-table;
+
+    .pair {
+        font-weight: bold;
+    }
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+
+    > tbody > tr > td {
+        padding: var(--padding-small);
+        vertical-align: top;
+    }
+
+    > thead > tr > th {
+        padding: var(--padding-midi) var(--padding-small);
+    }
+}
+
+@each $tone in $tones {
+    .currencies-table.#{$tone} {
+        border: var(--#{$tone}-border);
+        background: var(--#{$tone}-background-2);
+
+        .table {
+            color: var(--#{$tone}-font-color-1);
+
+            tr:nth-child(odd) {
+                background-color: var(--#{$tone}-background-3);
+            }
+        }
+    }
+}
