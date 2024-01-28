@@ -28,6 +28,8 @@ export const CurrenciesChart = () => {
             }
         }, 150);
 
+        resizeListener();
+
         window.addEventListener('resize', resizeListener);
 
         return () => {

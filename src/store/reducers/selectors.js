@@ -22,4 +22,5 @@ export const selectCalcCurrencies = (state) => state.currencies.currencies.filte
 export const selectHistory = (state) => state.history.history;
 
 /** Редактируемый виджет. */
-export const selectEditWidget = (state) => state.lastRates.editWidget;
+export const selectEditWidget = (state) =>
+    state.lastRates.rateWidgetConfig.find(({id}) => id === state.lastRates.editWidget) || state.lastRates.rateWidgetConfig[4];

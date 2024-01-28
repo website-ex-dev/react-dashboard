@@ -1,17 +1,24 @@
-import React, {useContext, useReducer} from 'react';
+import React, {useCallback, useContext, useEffect, useReducer} from 'react';
 import {useSelector} from 'react-redux';
 import Select from 'react-select';
-import {selectCurrencyOptions} from '../../store/reducers/selectors';
+import {selectCurrencyOptions, selectEditWidget} from '../../store/reducers/selectors';
 import {FormField} from '../Form/FormField';
 import {ThemeContext} from '../../context/ThemeContext';
 import {formReducer, initialValues} from '../../store/reducers/formReducer';
 import './styles.scss';
 
 /** Компонент для рейтинга валют. */
-export const CurrenciesForm = (id) => {
+export const CurrenciesForm = () => {
     const theme = useContext(ThemeContext);
     const currencyOptions = useSelector(selectCurrencyOptions);
+    const selected = useSelector(selectEditWidget);
+
     const [form, onChange] = useReducer(formReducer, initialValues);
+
+    useEffect(() => {
+        onChange({type: 'set_base', payload: {value: selected.base}});
+        onChange({type: 'set_code', payload: {value: selected.code}});
+    }, [selected]);
 
     const classNames = (error) => ({
         control: () => `select ${theme.tone} ${form.isSubmitted && error ? 'border-red' : ''}`,
@@ -25,6 +32,11 @@ export const CurrenciesForm = (id) => {
         }
     };
 
+    const getValue = useCallback(
+        (code) => currencyOptions.find(({value}) => value === code),
+        [currencyOptions, form.base.value, form.code.value],
+    );
+
     return (
         <section className="currencies-form">
             <div className={`currencies-form-wrap ${theme.tone}`}>
@@ -34,16 +46,22 @@ export const CurrenciesForm = (id) => {
                         options={currencyOptions}
                         onChange={onBaseChange}
                         placeholder="Выберите..."
-                        value={form.base.value}
-                        disabled
+                        value={getValue(form.base.value)}
+                        isDisabled
                     />
                 </FormField>
                 <FormField error={form.isSubmitted ? form.code.error : ''} label="Валюта котировки">
-                    <Select classNames={classNames(form.code.error)} options={currencyOptions} placeholder="Выберите..." disabled />
+                    <Select
+                        classNames={classNames(form.code.error)}
+                        options={currencyOptions}
+                        placeholder="Выберите..."
+                        value={getValue(form.code.value)}
+                        isDisabled
+                    />
                 </FormField>
                 <div className="buttons">
                     <button className={`button ${theme.color}`} onClick={onSubmit} type="button">
-                        {id ? 'Изменить' : 'Добавить'}
+                        Изменить
                     </button>
                 </div>
             </div>

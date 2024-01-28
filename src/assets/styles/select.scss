@@ -8,5 +8,8 @@
         color: var(--#{$tone}-font-color-1);
         border: var(--#{$tone}-border);
         background: var(--#{$tone}-background);
+        > div > div {
+            color: var(--#{$tone}-font-color-1);
+        }
     }
 }

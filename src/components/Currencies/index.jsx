@@ -8,7 +8,7 @@ import './styles.scss';
 /** Курсы валют. */
 export const Currencies = ({hideMenu}) => {
     const lastRates = useSelector(selectRateWidgetConfig);
-    const selectedId = useSelector(selectEditWidget);
+    const selected = useSelector(selectEditWidget);
 
     const renderWidgets = () =>
         lastRates.map((rate) => (
@@ -16,7 +16,7 @@ export const Currencies = ({hideMenu}) => {
                 key={rate.id}
                 isSelected={hideMenu}
                 values={hideMenu ? {...rate, editable: false} : rate}
-                active={rate.id === selectedId}
+                active={rate.id === selected.id}
             />
         ));
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useReducer} from 'react';
+import React, {useEffect, useContext, useReducer, useCallback} from 'react';
 import {useSelector} from 'react-redux';
 import {ThemeContext} from '../../context/ThemeContext';
 import {CurrencyButtons} from '../CurrencyButtons';
@@ -15,7 +15,11 @@ export const Calculator = () => {
     const [form, dispatchForm] = useReducer(calculatorReducer, initialValues);
     const rateList = useSelector(selectLastRates);
 
-    const findRate = (fromCode, toCode) => rateList.find(({code, base}) => fromCode === base && toCode === code);
+    const findRate = (fromCode, toCode) => {
+        return rateList.find(({code, base}) => {
+            return fromCode === base && toCode === code;
+        });
+    };
 
     const getRates = (fromCode, toCode) => {
         const rate = findRate(fromCode, toCode);
@@ -37,25 +41,23 @@ export const Calculator = () => {
                 payload: {rates},
             });
         }
-    }, [rateList]);
+    }, [rateList, form.fromCode, form.toCode]);
 
-    const onFromCodeChange = (code) => {
+    const onFromCodeChange = useCallback((code) => {
         dispatchForm({type: 'set_from_code', payload: {code}});
-        dispatchForm({type: 'set_rates', payload: {rates: getRates(code, form.toCode)}});
-    };
+    }, []);
 
-    const onToCodeChange = (code) => {
+    const onToCodeChange = useCallback((code) => {
         dispatchForm({type: 'set_to_code', payload: {code}});
-        dispatchForm({type: 'set_rates', payload: {rates: getRates(code, form.toCode)}});
-    };
+    }, []);
 
-    const onInputChange = (value) => {
+    const onInputChange = useCallback((value) => {
         dispatchForm({type: 'set_from_value', payload: {value}});
-    };
+    }, []);
 
-    const onReverse = () => {
+    const onReverse = useCallback(() => {
         dispatchForm({type: 'reverse'});
-    };
+    }, []);
 
     return (
         <article className={`calculator ${theme.tone}`}>
@@ -64,7 +66,7 @@ export const Calculator = () => {
                 <div className="form-buttons">
                     <CurrencyButtons value={form.fromCode} onChange={onFromCodeChange} />
                     <div>
-                        <Input maxLength={10} value={form.fromValue} onChange={onInputChange} readonly />
+                        <Input maxLength={10} value={form.fromValue} onChange={onInputChange} />
                         <span className="single-rate">{`1 ${form.fromCode} = ${form.rates.rate} ${form.toCode}`}</span>
                     </div>
                     <button aria-label="button" className="button icon button-reverse" onClick={onReverse} type="button">

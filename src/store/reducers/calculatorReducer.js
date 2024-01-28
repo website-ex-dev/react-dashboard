@@ -14,15 +14,18 @@ export const calculatorReducer = (state, action) => {
         case 'set_from_code':
             return {...state, fromCode: action.payload.code};
         case 'set_to_code':
-            return {...state, fromValue: 1, toCode: action.payload.code};
+            return {...state, toCode: action.payload.code};
         case 'set_from_value':
-            return {...state, fromValue: parseFloat(action.payload.value)};
-        case 'set_to_value':
-            return {...state, toValue: parseFloat(action.payload.value)};
+            const fromValue = parseFloat(action.payload.value) || 1;
+
+            return {...state, fromValue, toValue: fromValue * state.rates.rate};
         case 'set_rates': {
+            const rate = parseFloat(action.payload.rates.rate);
+
             return {
                 ...state,
-                rates: {rate: parseFloat(action.payload.rates.rate), rateReverse: parseFloat(action.payload.rates.rateReverse)},
+                rates: {rate, rateReverse: parseFloat(action.payload.rates.rateReverse)},
+                toValue: state.fromValue * rate,
             };
         }
         case 'reverse':

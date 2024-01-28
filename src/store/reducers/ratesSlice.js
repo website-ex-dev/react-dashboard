@@ -17,7 +17,6 @@ const ratesSlice = createSlice({
             {id: '5', base: 'USD', code: 'JPY', value: '', editable: true, diff: ''},
             {id: '6', base: 'CNY', code: 'RUB', value: '', editable: true, diff: ''},
         ],
-        rateTableConfig: [],
         editWidget: '4',
     },
     reducers: {

@@ -28,7 +28,7 @@ export const formReducer = (state, {type, payload}) => {
         case 'set_code':
             return {
                 ...state,
-                base: {
+                code: {
                     value: payload.value,
                     error: payload.value ? '' : isRequired,
                 },
